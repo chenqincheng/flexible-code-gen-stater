@@ -1,0 +1,1 @@
+package com.chenqincheng.flexible.code.gen.application.command;

@@ -1,0 +1,12 @@
+server:
+  shutdown: graceful
+spring:
+  # 所有 Bean 都将延迟初始化，一定程度上提高启动速度，但是第一次访问可能较慢。
+  main:
+    lazy-initialization: false
+  # 最大等待时间
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml

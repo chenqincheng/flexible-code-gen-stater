@@ -1,1 +1,0 @@
-package com.chenqincheng.flexible.code.gen.infrastructure;

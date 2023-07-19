@@ -47,7 +47,7 @@ public class SolutionDO {
     private String type;
 
 
-    @TableLogic
+    @TableLogic(value = "0", delval = "1")
     private Integer is_deleted;
 
     @TableField(value = "created_at")

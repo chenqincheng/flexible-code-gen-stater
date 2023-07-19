@@ -47,9 +47,9 @@ public class ProjectController {
     }
 
 
-    @GetMapping("/list")
+    @GetMapping("/dropdown")
     @Operation(summary = "下拉菜单")
-    public List<LabelValueVO> dropdown(@RequestParam String keyword){
+    public List<LabelValueVO> dropdown(@RequestParam(required = false) String keyword){
         return service.dropdown(keyword);
     }
 

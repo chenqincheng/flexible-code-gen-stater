@@ -29,9 +29,10 @@ public class ServiceDO {
     /**
      * 描述
      */
-    private String desc;
+    @TableField(value = "description")
+    private String description;
 
-    @TableLogic
+    @TableLogic(value = "0", delval = "1")
     private Integer is_deleted;
 
     @TableField(value = "created_at")

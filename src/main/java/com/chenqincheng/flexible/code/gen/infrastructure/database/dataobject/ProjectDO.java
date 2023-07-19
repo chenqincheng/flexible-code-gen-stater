@@ -31,7 +31,8 @@ public class ProjectDO {
     /**
      * 描述
      */
-    private String desc;
+    @TableField(value = "description")
+    private String description;
 
     @TableLogic
     private Integer is_deleted;

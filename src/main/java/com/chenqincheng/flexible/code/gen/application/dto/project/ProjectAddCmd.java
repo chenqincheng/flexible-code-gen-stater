@@ -19,4 +19,9 @@ public class ProjectAddCmd {
     private String code;
 
 
+
+    @Schema(name = "描述")
+    private String description;
+
+
 }

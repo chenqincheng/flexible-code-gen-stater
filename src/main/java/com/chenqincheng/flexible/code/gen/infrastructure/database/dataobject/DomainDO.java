@@ -18,19 +18,35 @@ public class DomainDO {
     @TableId
     private Long id;
 
-    @TableField(value = "parent_id")
-    private Long parentId;
+    /**
+     * 名称
+     */
+    private String name;
 
-    private String alias;
+    /**
+     * 编码
+     */
+    private String code;
 
-    private String path;
 
-    @TableLogic
-    private Integer dr;
+    /**
+     * 描述
+     */
+    @TableField(value = "description")
+    private String description;
 
-    @TableField(value = "create_time")
-    private Date createTime;
+    @TableLogic(value = "0", delval = "1")
+    private Integer isDeleted;
 
-    @TableField(value = "update_time")
-    private Date updateTime;
+    @TableField(value = "created_at")
+    private Date createdAt;
+
+    @TableField(value = "created_by")
+    private Long createdBy;
+
+    @TableField(value = "updated_at")
+    private Date updatedAt;
+
+    @TableField(value = "updated_by")
+    private Long updatedBy;
 }

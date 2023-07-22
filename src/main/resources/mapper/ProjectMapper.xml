@@ -5,7 +5,7 @@
 <mapper namespace="com.chenqincheng.flexible.code.gen.infrastructure.database.ProjectMapper">
 
     <select id="dropdown" resultType="com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto">
-        select code as value, name as label from project where 1=1
+        select code as value, name as label from project where is_deleted = 0
         <if test="keyword != null and keyword != ''">
             and name like concat('%', #{keyword}, '%')
         </if>

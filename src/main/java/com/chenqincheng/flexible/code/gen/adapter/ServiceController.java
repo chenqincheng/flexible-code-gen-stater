@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -19,38 +20,38 @@ import java.util.List;
 public class ServiceController {
 
     @Resource
-    private IServiceService service;
+    private IServiceService serviceService;
 
     @PostMapping("")
     @Operation(summary = "新增")
-    public Long add(@RequestBody ServiceAddCmd addCmd) {
-        return service.add(addCmd);
+    public Long add(@RequestBody @Valid ServiceAddCmd addCmd) {
+        return serviceService.add(addCmd);
     }
 
     @PutMapping("")
     @Operation(summary = "修改")
     public Long edit(@RequestBody ServiceEditCmd editCmd) {
-        return service.edit(editCmd);
+        return serviceService.edit(editCmd);
     }
 
 
     @GetMapping("/{id}")
     @Operation(summary = "新增")
     public ServiceVO get(@PathVariable Long id) {
-        return service.get(id);
+        return serviceService.get(id);
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "删除")
     public Boolean remove(@PathVariable Long id) {
-        return service.remove(id);
+        return serviceService.remove(id);
     }
 
 
     @GetMapping("/list")
     @Operation(summary = "下拉菜单")
     public List<LabelValueDto> dropdown(@RequestParam String keyword){
-        return service.dropdown(keyword);
+        return serviceService.dropdown(keyword);
     }
 
 

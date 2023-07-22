@@ -19,38 +19,38 @@ import java.util.List;
 public class ProjectController {
 
     @Resource
-    private IProjectService service;
+    private IProjectService projectService;
 
     @PostMapping("")
     @Operation(summary = "新增")
     public Long add(@RequestBody ProjectAddCmd addCmd) {
-        return service.add(addCmd);
+        return projectService.add(addCmd);
     }
 
     @PutMapping("")
     @Operation(summary = "修改")
     public Long edit(@RequestBody ProjectEditCmd editCmd) {
-        return service.edit(editCmd);
+        return projectService.edit(editCmd);
     }
 
 
     @GetMapping("/{id}")
     @Operation(summary = "详情")
     public ProjectDto get(@PathVariable Long id) {
-        return service.get(id);
+        return projectService.get(id);
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "删除")
     public Boolean remove(@PathVariable Long id) {
-        return service.remove(id);
+        return projectService.remove(id);
     }
 
 
     @GetMapping("/dropdown")
     @Operation(summary = "下拉菜单")
     public List<LabelValueDto> dropdown(@RequestParam(required = false) String keyword){
-        return service.dropdown(keyword);
+        return projectService.dropdown(keyword);
     }
 
 

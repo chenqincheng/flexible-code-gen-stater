@@ -6,6 +6,9 @@ import lombok.Data;
 @Data
 public class ProjectDto {
 
+    @Schema(name = "id")
+    private Long id;
+
     /**
      * 名称
      */

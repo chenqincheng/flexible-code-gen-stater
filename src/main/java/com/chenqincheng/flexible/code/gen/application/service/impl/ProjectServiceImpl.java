@@ -34,7 +34,7 @@ public class ProjectServiceImpl implements IProjectService {
 
     @Override
     public Boolean remove(Long id) {
-        return null;
+        return projectGateway.delete(id);
     }
 
     @Override

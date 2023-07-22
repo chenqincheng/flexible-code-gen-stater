@@ -12,4 +12,6 @@ public interface ProjectGateway {
     ProjectDto get(Long id);
 
     List<LabelValueDto> dropdown(String keyword);
+
+    Boolean delete(Long id);
 }

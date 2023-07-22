@@ -35,4 +35,9 @@ public class ProjectGatewayImpl implements ProjectGateway {
     public List<LabelValueDto> dropdown(String keyword) {
        return projectMapper.dropdown(keyword);
     }
+
+    @Override
+    public Boolean delete(Long id) {
+        return projectMapper.deleteById(id) > 0;
+    }
 }

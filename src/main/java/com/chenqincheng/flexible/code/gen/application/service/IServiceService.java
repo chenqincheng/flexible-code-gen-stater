@@ -1,6 +1,6 @@
 package com.chenqincheng.flexible.code.gen.application.service;
 
-import com.chenqincheng.flexible.code.gen.application.dto.LabelValueVO;
+import com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto;
 import com.chenqincheng.flexible.code.gen.application.dto.service.ServiceAddCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.service.ServiceEditCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.service.ServiceVO;
@@ -16,5 +16,5 @@ public interface IServiceService {
 
     Boolean remove(Long id);
 
-    List<LabelValueVO> dropdown(String keyword);
+    List<LabelValueDto> dropdown(String keyword);
 }

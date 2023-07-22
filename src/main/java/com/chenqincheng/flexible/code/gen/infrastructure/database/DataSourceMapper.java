@@ -1,14 +1,14 @@
 package com.chenqincheng.flexible.code.gen.infrastructure.database;
 
 
-import com.chenqincheng.flexible.code.gen.application.dto.ColumnInfoVO;
-import com.chenqincheng.flexible.code.gen.application.dto.TableInfoVO;
+import com.chenqincheng.flexible.code.gen.application.dto.ColumnInfoDto;
+import com.chenqincheng.flexible.code.gen.application.dto.TableInfoDto;
 
 import java.util.List;
 
 public interface DataSourceMapper {
 
-    List<TableInfoVO> selectDataBaseName();
+    List<TableInfoDto> selectDataBaseName();
 
-    List<ColumnInfoVO> selectTableColumn(String tableName);
+    List<ColumnInfoDto> selectTableColumn(String tableName);
 }

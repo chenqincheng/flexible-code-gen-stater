@@ -1,7 +1,8 @@
-package com.chenqincheng.flexible.code.gen.domain.project;
+package com.chenqincheng.flexible.code.gen.domain.service;
 
 import com.chenqincheng.flexible.code.gen.domain.Entity;
 import com.chenqincheng.flexible.code.gen.domain.gateway.ProjectGateway;
+import com.chenqincheng.flexible.code.gen.domain.gateway.ServiceGateway;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +13,7 @@ import javax.annotation.Resource;
 @Entity
 @Slf4j
 @NoArgsConstructor
-public class Project {
+public class Service {
 
     private String name;
 
@@ -24,7 +25,17 @@ public class Project {
 
 
     @Resource
-    private ProjectGateway projectGateway;
+    private ServiceGateway serviceGateway;
+
+
+    /**
+     * 服务关联项目
+     * @param projectId 项目
+     * @return 关联结果
+     */
+    public Boolean link(Long projectId){
+        return null;
+    }
 
 
 }

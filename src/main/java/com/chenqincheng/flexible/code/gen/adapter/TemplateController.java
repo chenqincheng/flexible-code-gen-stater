@@ -1,6 +1,6 @@
 package com.chenqincheng.flexible.code.gen.adapter;
 
-import com.chenqincheng.flexible.code.gen.application.dto.LabelValueVO;
+import com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto;
 import com.chenqincheng.flexible.code.gen.application.dto.template.TemplateAddCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.template.TemplateVO;
 import com.chenqincheng.flexible.code.gen.application.service.ITemplateService;
@@ -49,7 +49,7 @@ public class TemplateController {
 
     @GetMapping("/list")
     @Operation(summary = "下拉菜单")
-    public List<LabelValueVO> dropdown(@RequestParam String keyword){
+    public List<LabelValueDto> dropdown(@RequestParam String keyword){
         return templateService.dropdown(keyword);
     }
 

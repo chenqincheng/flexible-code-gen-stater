@@ -1,6 +1,6 @@
 package com.chenqincheng.flexible.code.gen.application.service;
 
-import com.chenqincheng.flexible.code.gen.application.dto.LabelValueVO;
+import com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto;
 import com.chenqincheng.flexible.code.gen.application.dto.template.TemplateAddCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.template.TemplateVO;
 
@@ -11,7 +11,7 @@ public interface ITemplateService {
 
     TemplateVO query(Long id);
 
-    List<LabelValueVO> dropdown(String keyword);
+    List<LabelValueDto> dropdown(String keyword);
 
     TemplateVO remove(Long id);
 

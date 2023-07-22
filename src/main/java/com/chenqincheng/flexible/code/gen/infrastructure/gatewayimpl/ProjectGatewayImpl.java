@@ -1,12 +1,12 @@
 package com.chenqincheng.flexible.code.gen.infrastructure.gatewayimpl;
 
-import com.chenqincheng.flexible.code.gen.application.dto.LabelValueVO;
+import com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto;
 import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectAddCmd;
-import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectVO;
+import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectDto;
 import com.chenqincheng.flexible.code.gen.domain.gateway.ProjectGateway;
+import com.chenqincheng.flexible.code.gen.infrastructure.convertor.ProjectConvertor;
 import com.chenqincheng.flexible.code.gen.infrastructure.database.ProjectMapper;
 import com.chenqincheng.flexible.code.gen.infrastructure.database.dataobject.ProjectDO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,24 +20,19 @@ public class ProjectGatewayImpl implements ProjectGateway {
 
     @Override
     public Long add(ProjectAddCmd addCmd) {
-        ProjectDO projectDO = new ProjectDO();
-        projectDO.setName(addCmd.getName());
-        projectDO.setCode(addCmd.getCode());
+        ProjectDO projectDO = ProjectConvertor.INSTANCE.addCmd2do(addCmd);
         projectMapper.insert(projectDO);
         return projectDO.getId();
     }
 
     @Override
-    public ProjectVO get(Long id) {
+    public ProjectDto get(Long id) {
         ProjectDO projectDO = projectMapper.selectById(id);
-        ProjectVO projectVO = new ProjectVO();
-        BeanUtils.copyProperties(projectDO, projectVO);
-        return projectVO;
+        return ProjectConvertor.INSTANCE.do2dto(projectDO);
     }
 
     @Override
-    public List<LabelValueVO> dropdown(String keyword) {
-
+    public List<LabelValueDto> dropdown(String keyword) {
        return projectMapper.dropdown(keyword);
     }
 }

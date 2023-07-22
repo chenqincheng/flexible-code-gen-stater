@@ -1,6 +1,6 @@
 package com.chenqincheng.flexible.code.gen.application.service.impl;
 
-import com.chenqincheng.flexible.code.gen.application.dto.LabelValueVO;
+import com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto;
 import com.chenqincheng.flexible.code.gen.application.dto.service.ServiceAddCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.service.ServiceEditCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.service.ServiceVO;
@@ -34,7 +34,7 @@ public class ServiceServiceImpl implements IServiceService {
     }
 
     @Override
-    public List<LabelValueVO> dropdown(String keyword) {
+    public List<LabelValueDto> dropdown(String keyword) {
         return null;
     }
 }

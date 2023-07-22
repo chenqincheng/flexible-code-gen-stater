@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-public class ProjectVO {
+public class ProjectDto {
 
     /**
      * 名称
@@ -17,6 +17,10 @@ public class ProjectVO {
      */
     @Schema(name = "编码")
     private String code;
+
+
+    @Schema(name = "描述")
+    private String description;
 
 
 }

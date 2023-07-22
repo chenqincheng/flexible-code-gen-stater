@@ -1,9 +1,9 @@
 package com.chenqincheng.flexible.code.gen.adapter;
 
-import com.chenqincheng.flexible.code.gen.application.dto.LabelValueVO;
+import com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto;
 import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectAddCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectEditCmd;
-import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectVO;
+import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectDto;
 import com.chenqincheng.flexible.code.gen.application.service.IProjectService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +36,7 @@ public class ProjectController {
 
     @GetMapping("/{id}")
     @Operation(summary = "详情")
-    public ProjectVO get(@PathVariable Long id) {
+    public ProjectDto get(@PathVariable Long id) {
         return service.get(id);
     }
 
@@ -49,7 +49,7 @@ public class ProjectController {
 
     @GetMapping("/dropdown")
     @Operation(summary = "下拉菜单")
-    public List<LabelValueVO> dropdown(@RequestParam(required = false) String keyword){
+    public List<LabelValueDto> dropdown(@RequestParam(required = false) String keyword){
         return service.dropdown(keyword);
     }
 

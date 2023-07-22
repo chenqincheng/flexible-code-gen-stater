@@ -3,7 +3,7 @@ package com.chenqincheng.flexible.code.gen.application.dto;
 import lombok.Data;
 
 @Data
-public class ColumnInfoVO {
+public class ColumnInfoDto {
 
     /**
      * 字段名称

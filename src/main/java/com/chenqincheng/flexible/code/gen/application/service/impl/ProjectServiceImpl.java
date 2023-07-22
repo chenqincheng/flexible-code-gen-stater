@@ -1,9 +1,9 @@
 package com.chenqincheng.flexible.code.gen.application.service.impl;
 
-import com.chenqincheng.flexible.code.gen.application.dto.LabelValueVO;
+import com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto;
 import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectAddCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectEditCmd;
-import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectVO;
+import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectDto;
 import com.chenqincheng.flexible.code.gen.application.service.IProjectService;
 import com.chenqincheng.flexible.code.gen.domain.gateway.ProjectGateway;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class ProjectServiceImpl implements IProjectService {
     }
 
     @Override
-    public ProjectVO get(Long id) {
+    public ProjectDto get(Long id) {
         return projectGateway.get(id);
     }
 
@@ -38,7 +38,7 @@ public class ProjectServiceImpl implements IProjectService {
     }
 
     @Override
-    public List<LabelValueVO> dropdown(String keyword) {
+    public List<LabelValueDto> dropdown(String keyword) {
         return projectGateway.dropdown(keyword);
     }
 }

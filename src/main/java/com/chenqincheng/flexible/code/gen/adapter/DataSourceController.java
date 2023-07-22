@@ -1,7 +1,7 @@
 package com.chenqincheng.flexible.code.gen.adapter;
 
-import com.chenqincheng.flexible.code.gen.application.dto.ColumnInfoVO;
-import com.chenqincheng.flexible.code.gen.application.dto.TableInfoVO;
+import com.chenqincheng.flexible.code.gen.application.dto.ColumnInfoDto;
+import com.chenqincheng.flexible.code.gen.application.dto.TableInfoDto;
 import com.chenqincheng.flexible.code.gen.application.service.DataSourceService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,14 +19,14 @@ public class DataSourceController {
 
     @GetMapping("/table")
     @Operation(summary = "查询表")
-    public List<TableInfoVO> queryTable() {
+    public List<TableInfoDto> queryTable() {
         return dataSourceService.queryTable();
     }
 
 
     @GetMapping("/column")
     @Operation(summary = "查询表字段")
-    public List<ColumnInfoVO> queryTableColumn(@RequestParam(value = "tableName", required = true) String tableName) {
+    public List<ColumnInfoDto> queryTableColumn(@RequestParam(value = "tableName", required = true) String tableName) {
         return dataSourceService.queryTableColumn(tableName);
     }
 

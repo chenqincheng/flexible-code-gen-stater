@@ -2,8 +2,8 @@ package com.chenqincheng.flexible.code.gen.application.service;
 
 
 import com.chenqincheng.flexible.code.gen.infrastructure.database.DataSourceMapper;
-import com.chenqincheng.flexible.code.gen.application.dto.ColumnInfoVO;
-import com.chenqincheng.flexible.code.gen.application.dto.TableInfoVO;
+import com.chenqincheng.flexible.code.gen.application.dto.ColumnInfoDto;
+import com.chenqincheng.flexible.code.gen.application.dto.TableInfoDto;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,11 +15,11 @@ public class DataSourceService {
     @Resource
     private DataSourceMapper dataSourceMapper;
 
-    public List<TableInfoVO> queryTable() {
+    public List<TableInfoDto> queryTable() {
         return dataSourceMapper.selectDataBaseName();
     }
 
-    public List<ColumnInfoVO> queryTableColumn(String tableName) {
+    public List<ColumnInfoDto> queryTableColumn(String tableName) {
         return dataSourceMapper.selectTableColumn(tableName);
     }
 }

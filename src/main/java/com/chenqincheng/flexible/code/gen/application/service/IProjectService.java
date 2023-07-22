@@ -1,9 +1,9 @@
 package com.chenqincheng.flexible.code.gen.application.service;
 
-import com.chenqincheng.flexible.code.gen.application.dto.LabelValueVO;
+import com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto;
 import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectAddCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectEditCmd;
-import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectVO;
+import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectDto;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ public interface IProjectService {
 
     Long edit(ProjectEditCmd editCmd);
 
-    ProjectVO get(Long id);
+    ProjectDto get(Long id);
 
     Boolean remove(Long id);
 
-    List<LabelValueVO> dropdown(String keyword);
+    List<LabelValueDto> dropdown(String keyword);
 }

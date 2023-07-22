@@ -1,4 +1,4 @@
-package com.chenqincheng.flexible.code.gen.domain.utils;
+package com.chenqincheng.flexible.code.gen.infrastructure.utils;
 
 /**
  * 将驼峰命名法转换成短横线命名

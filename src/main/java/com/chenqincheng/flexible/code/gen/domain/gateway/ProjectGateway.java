@@ -1,15 +1,15 @@
 package com.chenqincheng.flexible.code.gen.domain.gateway;
 
-import com.chenqincheng.flexible.code.gen.application.dto.LabelValueVO;
+import com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto;
 import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectAddCmd;
-import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectVO;
+import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectDto;
 
 import java.util.List;
 
 public interface ProjectGateway {
     Long add(ProjectAddCmd addCmd);
 
-    ProjectVO get(Long id);
+    ProjectDto get(Long id);
 
-    List<LabelValueVO> dropdown(String keyword);
+    List<LabelValueDto> dropdown(String keyword);
 }

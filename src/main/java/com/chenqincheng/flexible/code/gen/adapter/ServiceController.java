@@ -1,6 +1,6 @@
 package com.chenqincheng.flexible.code.gen.adapter;
 
-import com.chenqincheng.flexible.code.gen.application.dto.LabelValueVO;
+import com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto;
 import com.chenqincheng.flexible.code.gen.application.dto.service.ServiceAddCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.service.ServiceEditCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.service.ServiceVO;
@@ -49,7 +49,7 @@ public class ServiceController {
 
     @GetMapping("/list")
     @Operation(summary = "下拉菜单")
-    public List<LabelValueVO> dropdown(@RequestParam String keyword){
+    public List<LabelValueDto> dropdown(@RequestParam String keyword){
         return service.dropdown(keyword);
     }
 

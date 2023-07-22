@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-public class TableInfoVO {
+public class TableInfoDto {
 
     @Schema(name = "表名")
     private String name;

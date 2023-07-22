@@ -9,11 +9,11 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * 项目
+ * 前缀、后缀
  */
 @Data
-@TableName(value = "project")
-public class ProjectDO {
+@TableName(value = "fix")
+public class FixDO {
     @TableId
     private Long id;
 
@@ -26,6 +26,12 @@ public class ProjectDO {
      * 编码
      */
     private String code;
+
+
+    /**
+     * 类型: PREFIX 前缀、SUFFIX 后缀
+     */
+    private String type;
 
 
     /**

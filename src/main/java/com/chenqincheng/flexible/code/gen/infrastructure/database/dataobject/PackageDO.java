@@ -36,8 +36,9 @@ public class PackageDO {
     @TableField(value = "description")
     private String description;
 
-    @TableLogic
-    private Integer is_deleted;
+    @TableLogic(value = "0", delval = "1")
+    @TableField(value = "is_deleted")
+    private Boolean isDeleted;
 
     @TableField(value = "created_at")
     private Date createdAt;

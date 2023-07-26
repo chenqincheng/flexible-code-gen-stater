@@ -2,7 +2,10 @@ package com.chenqincheng.flexible.code.gen.domain.gateway;
 
 import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainAddCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainEditCmd;
+import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainRequest;
 import com.chenqincheng.flexible.code.gen.domain.domain.Domain;
+
+import java.util.List;
 
 public interface DomainGateway {
     Long add(DomainAddCmd addCmd);
@@ -12,4 +15,6 @@ public interface DomainGateway {
     boolean edit(DomainEditCmd editCmd);
 
     Domain get(Long id);
+
+    List<Domain> list(DomainRequest request);
 }

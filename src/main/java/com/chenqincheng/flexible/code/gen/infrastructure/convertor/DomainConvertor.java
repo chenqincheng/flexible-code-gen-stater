@@ -8,6 +8,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface DomainConvertor {
 
@@ -22,4 +24,7 @@ public interface DomainConvertor {
 
     @Mappings({})
     Domain do2domain(DomainDO domainDO);
+
+    @Mappings({})
+    List<Domain> doList2domainList(List<DomainDO> domainDOList);
 }

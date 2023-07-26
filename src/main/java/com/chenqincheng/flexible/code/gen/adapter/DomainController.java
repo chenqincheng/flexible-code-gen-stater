@@ -2,8 +2,10 @@ package com.chenqincheng.flexible.code.gen.adapter;
 
 import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainAddCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainEditCmd;
-import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainVo;
+import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainDto;
+import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainRequest;
 import com.chenqincheng.flexible.code.gen.application.service.IDomainService;
+import com.github.pagehelper.PageInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,8 +43,14 @@ public class DomainController {
 
     @GetMapping("/{id}")
     @Operation(summary = "获取")
-    public DomainVo get(@PathVariable Long id) {
+    public DomainDto get(@PathVariable Long id) {
         return domainService.get(id);
+    }
+
+    @GetMapping("")
+    @Operation(summary = "列表")
+    public PageInfo<DomainDto> list(@RequestBody DomainRequest request) {
+        return domainService.list(request);
     }
 
 

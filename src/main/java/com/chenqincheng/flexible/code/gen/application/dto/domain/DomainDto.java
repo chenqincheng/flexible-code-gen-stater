@@ -6,7 +6,7 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 @Data
-public class DomainVo {
+public class DomainDto {
 
     @Schema(name = "id")
     private Long id;

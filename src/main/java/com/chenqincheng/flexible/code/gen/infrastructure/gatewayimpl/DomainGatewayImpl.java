@@ -2,6 +2,7 @@ package com.chenqincheng.flexible.code.gen.infrastructure.gatewayimpl;
 
 import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainAddCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainEditCmd;
+import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainRequest;
 import com.chenqincheng.flexible.code.gen.domain.domain.Domain;
 import com.chenqincheng.flexible.code.gen.domain.gateway.DomainGateway;
 import com.chenqincheng.flexible.code.gen.infrastructure.convertor.DomainConvertor;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 @Component
 public class DomainGatewayImpl implements DomainGateway {
@@ -51,4 +53,12 @@ public class DomainGatewayImpl implements DomainGateway {
         }
         return DomainConvertor.INSTANCE.do2domain(domainDO);
     }
+
+    @Override
+    public List<Domain> list(DomainRequest request) {
+
+        List<DomainDO> domainDOList = domainMapper.selectList(null);
+        return DomainConvertor.INSTANCE.doList2domainList(domainDOList);
+    }
+
 }

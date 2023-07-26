@@ -3,13 +3,18 @@ package com.chenqincheng.flexible.code.gen.application.service.impl;
 import com.chenqincheng.flexible.code.gen.application.assembler.DomainAssembler;
 import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainAddCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainEditCmd;
-import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainVo;
+import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainDto;
+import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainRequest;
 import com.chenqincheng.flexible.code.gen.application.service.IDomainService;
 import com.chenqincheng.flexible.code.gen.domain.domain.Domain;
 import com.chenqincheng.flexible.code.gen.domain.gateway.DomainGateway;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class DomainServiceImpl implements IDomainService {
@@ -29,13 +34,33 @@ public class DomainServiceImpl implements IDomainService {
     }
 
     @Override
-    public DomainVo get(Long id) {
+    public DomainDto get(Long id) {
         Domain domain = domainGateway.get(id);
-        return DomainAssembler.INSTANCE.domain2vo(domain);
+        return DomainAssembler.INSTANCE.domain2dto(domain);
     }
 
     @Override
     public boolean edit(DomainEditCmd editCmd) {
         return domainGateway.edit(editCmd);
+    }
+
+    @Override
+    public PageInfo<DomainDto> list(DomainRequest request) {
+        // 设置分页信息
+        PageHelper.startPage(request.getPageNum(), request.getPageSize());
+
+        // 获取原始数据列表
+        List<Domain> domainList = domainGateway.list(request);
+
+        // 将原始数据转换成 DomainDto 的列表
+        List<DomainDto> domainDtoList = new ArrayList<>();
+        for (Domain domain : domainList) {
+            DomainDto domainDto = DomainAssembler.INSTANCE.domain2dto(domain);
+            domainDtoList.add(domainDto);
+        }
+
+        // 构造 PageInfo，并保留原始的分页信息
+        PageInfo<DomainDto> pageInfo = new PageInfo<>(domainDtoList);
+        return pageInfo;
     }
 }

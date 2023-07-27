@@ -4,7 +4,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-public class PackageAddCmd {
+public class PackageEditCmd {
+
+    private Long id;
 
     @Schema(name = "名称")
     private String name;

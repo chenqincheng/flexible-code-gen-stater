@@ -3,5 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chenqincheng.flexible.code.gen.infrastructure.database.DomainMapper">
-    
+
+    <select id="page" resultType="com.chenqincheng.flexible.code.gen.application.dto.domain.DomainDto">
+        select * from domain where is_deleted = 0
+        <if test="request.name != null and request.name != ''">
+            and name like concat('%', #{request.name}, '%')
+        </if>
+        <if test="request.code != null and request.code != ''">
+            and code = like concat('%', #{request.code}, '%')
+        </if>
+    </select>
+    <select id="dropdown" resultType="com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto">
+        select id as value , name AS label from domain where is_deleted = 0
+        <if test="keyword != null and request.keyword != ''">
+            and name like concat('%', #{keyword}, '%') or code like concat('%', #{keyword}, '%')
+        </if>
+    </select>
 </mapper>

@@ -1,5 +1,6 @@
 package com.chenqincheng.flexible.code.gen.adapter;
 
+import com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto;
 import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainDto;
 import com.chenqincheng.flexible.code.gen.application.dto.pack.age.PackageAddCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.pack.age.PackageDto;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * 包名
@@ -29,7 +31,7 @@ public class PackageController {
         return packageService.add(addCmd);
     }
 
-    @PostMapping("/edit")
+    @PutMapping("")
     @Operation(summary = "更新")
     public boolean edit(@RequestBody @Valid PackageEditCmd editCmd) {
         return packageService.edit(editCmd);
@@ -50,8 +52,15 @@ public class PackageController {
 
     @GetMapping("")
     @Operation(summary = "列表")
-    public PageInfo<PackageDto> list(@RequestBody PackageRequest request) {
-        return packageService.list(request);
+    public PageInfo<PackageDto> page(@RequestBody PackageRequest request) {
+        return packageService.page(request);
+    }
+
+
+    @GetMapping("/dropdown")
+    @Operation(summary = "下拉菜单")
+    public List<LabelValueDto> dropdown(@RequestParam(required = false) String keyword){
+        return packageService.dropdown(keyword);
     }
 
 }

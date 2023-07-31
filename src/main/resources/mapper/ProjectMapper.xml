@@ -10,4 +10,13 @@
             and name like concat('%', #{keyword}, '%')
         </if>
     </select>
+    <select id="page" resultType="com.chenqincheng.flexible.code.gen.application.dto.project.ProjectDto">
+        select * from project where is_deleted = 0
+        <if test="request.name != null and request.name != ''">
+            and name like concat('%', #{request.name}, '%')
+        </if>
+        <if test="request.code != null and request.code != ''">
+            and code = like concat('%', #{request.code}, '%')
+        </if>
+    </select>
 </mapper>

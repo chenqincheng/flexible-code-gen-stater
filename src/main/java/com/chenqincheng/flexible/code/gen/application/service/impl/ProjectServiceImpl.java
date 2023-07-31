@@ -4,8 +4,10 @@ import com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto;
 import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectAddCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectEditCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectDto;
+import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectRequest;
 import com.chenqincheng.flexible.code.gen.application.service.IProjectService;
 import com.chenqincheng.flexible.code.gen.domain.gateway.ProjectGateway;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -40,5 +42,10 @@ public class ProjectServiceImpl implements IProjectService {
     @Override
     public List<LabelValueDto> dropdown(String keyword) {
         return projectGateway.dropdown(keyword);
+    }
+
+    @Override
+    public PageInfo<ProjectDto> page(ProjectRequest request) {
+        return projectGateway.page(request);
     }
 }

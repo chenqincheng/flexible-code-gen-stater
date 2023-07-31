@@ -4,7 +4,9 @@ import com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto;
 import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectAddCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectEditCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectDto;
+import com.chenqincheng.flexible.code.gen.application.dto.project.ProjectRequest;
 import com.chenqincheng.flexible.code.gen.application.service.IProjectService;
+import com.github.pagehelper.PageInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +36,7 @@ public class ProjectController {
     }
 
 
+
     @GetMapping("/{id}")
     @Operation(summary = "详情")
     public ProjectDto get(@PathVariable Long id) {
@@ -46,11 +49,16 @@ public class ProjectController {
         return projectService.remove(id);
     }
 
-
     @GetMapping("/dropdown")
     @Operation(summary = "下拉菜单")
     public List<LabelValueDto> dropdown(@RequestParam(required = false) String keyword){
         return projectService.dropdown(keyword);
+    }
+
+    @PostMapping("/page")
+    @Operation(summary = "分页")
+    public PageInfo<ProjectDto> page(@RequestBody ProjectRequest request){
+        return projectService.page(request);
     }
 
 

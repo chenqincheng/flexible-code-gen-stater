@@ -1,6 +1,7 @@
 package com.chenqincheng.flexible.code.gen.application.service.impl;
 
 import com.chenqincheng.flexible.code.gen.application.assembler.DomainAssembler;
+import com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto;
 import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainAddCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainEditCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainDto;
@@ -45,22 +46,20 @@ public class DomainServiceImpl implements IDomainService {
     }
 
     @Override
-    public PageInfo<DomainDto> list(DomainRequest request) {
+    public PageInfo<DomainDto> page(DomainRequest request) {
         // 设置分页信息
         PageHelper.startPage(request.getPageNum(), request.getPageSize());
 
         // 获取原始数据列表
-        List<Domain> domainList = domainGateway.list(request);
-
-        // 将原始数据转换成 DomainDto 的列表
-        List<DomainDto> domainDtoList = new ArrayList<>();
-        for (Domain domain : domainList) {
-            DomainDto domainDto = DomainAssembler.INSTANCE.domain2dto(domain);
-            domainDtoList.add(domainDto);
-        }
+        List<DomainDto> domainList = domainGateway.list(request);
 
         // 构造 PageInfo，并保留原始的分页信息
-        PageInfo<DomainDto> pageInfo = new PageInfo<>(domainDtoList);
+        PageInfo<DomainDto> pageInfo = new PageInfo<>(domainList);
         return pageInfo;
+    }
+
+    @Override
+    public List<LabelValueDto> dropdown(String keyword) {
+        return domainGateway.dropdown(keyword);
     }
 }

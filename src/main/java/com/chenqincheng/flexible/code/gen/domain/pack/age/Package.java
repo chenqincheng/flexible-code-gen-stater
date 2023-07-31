@@ -63,11 +63,6 @@ public class Package {
     private PackageGateway packageGateway;
 
 
-
-    public Long add() {
-        return packageGateway.add(this);
-    }
-
     public boolean edit() {
         return packageGateway.edit(this);
     }

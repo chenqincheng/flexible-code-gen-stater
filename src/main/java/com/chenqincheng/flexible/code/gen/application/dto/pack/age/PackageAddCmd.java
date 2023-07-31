@@ -6,12 +6,6 @@ import lombok.Data;
 @Data
 public class PackageAddCmd {
 
-    @Schema(name = "名称")
-    private String name;
-
-    @Schema(name = "编码")
-    private String code;
-
     @Schema(name = "父id")
     private Long parentId;
 

@@ -18,12 +18,6 @@ public class PackageDO {
     @TableId
     private Long id;
 
-    @TableField(value = "name")
-    private String name;
-
-    @TableField(value = "code")
-    private String code;
-
     @TableField(value = "parent_id")
     private Long parentId;
 

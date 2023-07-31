@@ -4,4 +4,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chenqincheng.flexible.code.gen.infrastructure.database.PackageMapper">
 
+    <select id="dropdown" resultType="com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto">
+        select path as value, alias as label from package where is_deleted = 0
+        <if test="keyword != null and keyword != ''">
+            and alias like concat('%', #{keyword}, '%') or path like concat('%', #{keyword}, '%')
+        </if>
+    </select>
+    <select id="page" resultType="com.chenqincheng.flexible.code.gen.application.dto.pack.age.PackageDto">
+        select * from package where is_deleted = 0
+        <if test="request.name != null and request.name != ''">
+            and alias like concat('%', #{request.name}, '%')
+        </if>
+        <if test="request.code != null and request.code != ''">
+            and path like concat('%', #{request.code}, '%')
+        </if>
+        order by update_at desc
+    </select>
+    <select id="get" resultType="com.chenqincheng.flexible.code.gen.application.dto.domain.DomainDto">
+        SELECT * FROM package WHERE is_deleted = 0 AND id = #{id}
+    </select>
 </mapper>

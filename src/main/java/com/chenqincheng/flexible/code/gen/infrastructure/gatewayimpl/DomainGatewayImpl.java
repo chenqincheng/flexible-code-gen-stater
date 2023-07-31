@@ -1,6 +1,8 @@
 package com.chenqincheng.flexible.code.gen.infrastructure.gatewayimpl;
 
+import com.chenqincheng.flexible.code.gen.application.dto.LabelValueDto;
 import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainAddCmd;
+import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainDto;
 import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainEditCmd;
 import com.chenqincheng.flexible.code.gen.application.dto.domain.DomainRequest;
 import com.chenqincheng.flexible.code.gen.domain.domain.Domain;
@@ -8,6 +10,7 @@ import com.chenqincheng.flexible.code.gen.domain.gateway.DomainGateway;
 import com.chenqincheng.flexible.code.gen.infrastructure.convertor.DomainConvertor;
 import com.chenqincheng.flexible.code.gen.infrastructure.database.DomainMapper;
 import com.chenqincheng.flexible.code.gen.infrastructure.database.dataobject.DomainDO;
+import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -55,10 +58,14 @@ public class DomainGatewayImpl implements DomainGateway {
     }
 
     @Override
-    public List<Domain> list(DomainRequest request) {
+    public List<DomainDto> list(DomainRequest request) {
+        PageHelper.startPage(request.getPageNum(), request.getPageSize());
+        return domainMapper.page(request);
+    }
 
-        List<DomainDO> domainDOList = domainMapper.selectList(null);
-        return DomainConvertor.INSTANCE.doList2domainList(domainDOList);
+    @Override
+    public List<LabelValueDto> dropdown(String keyword) {
+        return domainMapper.dropdown(keyword);
     }
 
 }
